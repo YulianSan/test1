@@ -1,9 +1,15 @@
 const http = require("http");
 const porta = 3000;
+const fs = require("fs")
+
 const servidor = http.createServer(
     (req,res)=>{
-        res.write("Hello World")
-        console.log(porta)
-        res.end();
+        fs.readFile('fogo.html',(err,arq)=>{
+            res.write(arq);
+            return res.end();
+        })
+    
+        
     }  
-).listen(porta,()=>{console.log("Servidor rodando")})
+)
+servidor.listen(porta,()=>{console.log("Servidor rodando")})
